@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steven Huynh - Data Analytics Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f2f5f2;
+    --surface: #ffffff;
+    --border: #d8e4d8;
+    --text: #1a211a;
+    --muted: #526052;
+    --subtle: #8a9e8a;
+    --accent: #2d6040;
+    --accent-mid: #4a8a60;
+    --accent-light: #e8f2eb;
+    --accent-hover: #224d32;
+    --forest: #1a3d28;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ========== NAVIGATION ========== */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--forest);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 56px;
+  }
+
+  .nav-logo {
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 0.25rem; list-style: none; }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+
+  .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+
+  /* ========== LAYOUT ========== */
+  .container { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
+
+  section { padding: 4.5rem 0; border-top: 1px solid var(--border); }
+  section:first-of-type { border-top: none; }
+
+  /* ========== HERO ========== */
+  .hero { padding: 0 0 4.5rem; }
+
+  /* EDITABLE: Replace "banner.png" with your own image filename */
+  .hero-banner {
+    width: 100%;
+    display: block;
+    border-radius: 0 0 12px 12px;
+    margin-bottom: 2.75rem;
+    max-height: 180px;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent-mid);
+    letter-spacing: 0.04em;
+    margin-bottom: 1.25rem;
+  }
+
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-mid); }
+
+  h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(36px, 6vw, 52px);
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+    color: var(--forest);
+  }
+
+  h1 em { font-style: italic; color: var(--accent); }
+
+  /* EDITABLE: This is your subtitle line */
+  .hero-subtitle {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  .hero-links { display: flex; gap: 0.65rem; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.15s;
+    border: 1px solid transparent;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .btn-primary { background: var(--forest); color: #fff; }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-ghost { background: transparent; color: var(--accent); border-color: var(--accent-mid); }
+  .btn-ghost:hover { background: var(--accent-light); }
+
+  /* ========== SECTION HEADERS ========== */
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-mid);
+    margin-bottom: 0.4rem;
+  }
+
+  h2 {
+    font-family: 'Lora', serif;
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--forest);
+    line-height: 1.3;
+    margin-bottom: 1.75rem;
+  }
+
+  /* ========== ABOUT ========== */
+  /* EDITABLE: Update the text inside .about-text paragraph in the HTML below */
+  .about-text {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 640px;
+  }
+
+  .about-text strong { color: var(--text); font-weight: 500; }
+
+  /* ========== SKILLS ========== */
+  /* EDITABLE: Add or remove skills by editing the HTML skill tags below */
+  .skills-row { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.5rem; }
+
+  .skill-tag {
+    font-size: 12px;
+    color: var(--muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 4px 11px;
+    transition: all 0.15s;
+  }
+
+  .skill-tag:hover { border-color: var(--accent-mid); color: var(--accent); }
+
+  /* ========== MAIN TAB NAVIGATION (Projects / Work History) ========== */
+  .main-tabs {
+    display: flex;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 2.5rem;
+    gap: 0.5rem;
+  }
+
+  .main-tab-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--subtle);
+    background: none;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+  }
+
+  .main-tab-btn:hover { color: var(--accent); }
+  .main-tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+
+  .main-tab-content { display: none; }
+  .main-tab-content.active { display: block; }
+
+  /* ========== WORK HISTORY SUB-TABS ========== */
+  .work-tabs {
+    display: flex;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 2rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .work-tabs::-webkit-scrollbar { display: none; }
+
+  .work-tab-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--subtle);
+    background: none;
+    border: none;
+    padding: 10px 18px;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+  }
+
+  .work-tab-btn:hover { color: var(--accent); }
+  .work-tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .work-tab-panel { display: none; }
+  .work-tab-panel.active { display: block; }
+
+  /* ========== EXPERIENCE ITEM ========== */
+  /* EDITABLE: Add or edit experience details in the HTML below */
+  .exp-item {
+    display: flex;
+    gap: 1.1rem;
+    padding-bottom: 1.75rem;
+    margin-bottom: 1.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .exp-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+  .exp-logo {
+    width: 42px; height: 42px;
+    border-radius: 8px;
+    background: var(--accent-light);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--accent);
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .exp-role { font-size: 14.5px; font-weight: 600; color: var(--text); }
+  .exp-company { font-size: 13px; color: var(--muted); margin-top: 1px; }
+  .exp-date { font-size: 12px; color: var(--subtle); margin-top: 2px; margin-bottom: 0.6rem; }
+
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+
+  .exp-bullets li {
+    font-size: 13.5px;
+    color: var(--muted);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.65;
+  }
+
+  .exp-bullets li::before { content: '–'; position: absolute; left: 0; color: var(--subtle); }
+
+  /* ========== PROJECTS ========== */
+  /* EDITABLE: Add project cards in the HTML below. Each card supports an optional image. */
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 0.85rem;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  .project-card:hover { border-color: var(--accent-mid); box-shadow: 0 2px 10px rgba(45,96,64,0.08); }
+  .project-card.featured { border-color: var(--accent-mid); }
+
+  /* EDITABLE: To add an image to a project, use <img src="your-image.png" class="project-img" /> */
+  .project-img {
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid var(--border);
+    background: #f0f4f0;
+  }
+
+  .project-body { padding: 1.35rem 1.6rem; }
+  .project-body.large { padding: 1.6rem 1.85rem; }
+
+  .project-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.65rem;
+  }
+
+  .project-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+
+  .tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 4px;
+  }
+
+  .tag-green { background: var(--accent-light); color: var(--accent); }
+  .tag-sage { background: #eef3ee; color: #3a6048; }
+  .tag-moss { background: #edf0ec; color: #4a5e4a; }
+
+  .project-date { font-size: 12px; color: var(--subtle); }
+
+  .project-title {
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--forest);
+    line-height: 1.35;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-title.large { font-size: 20px; margin-bottom: 0.65rem; }
+
+  .project-desc {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 0.85rem;
+  }
+
+  .project-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .project-bullets li {
+    font-size: 13px;
+    color: var(--muted);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.65;
+  }
+
+  .project-bullets li::before { content: '–'; position: absolute; left: 0; color: var(--subtle); }
+
+  .project-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+  .proj-link {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid var(--accent-mid);
+    border-radius: 5px;
+    padding: 5px 12px;
+    transition: all 0.15s;
+    background: var(--accent-light);
+  }
+
+  .proj-link:hover { background: #d4e8da; border-color: var(--accent); }
+
+  .proj-link.secondary {
+    color: var(--muted);
+    border-color: var(--border);
+    background: transparent;
+  }
+
+  .proj-link.secondary:hover { color: var(--text); border-color: var(--accent-mid); background: var(--accent-light); }
+
+  /* ========== CONTACT ========== */
+  .contact-text {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    max-width: 460px;
+  }
+
+  .contact-items { display: flex; flex-direction: column; gap: 0.55rem; max-width: 460px; }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 1.1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.15s;
+  }
+
+  .contact-item:hover { border-color: var(--accent-mid); background: var(--accent-light); }
+
+  .contact-type { font-size: 10px; color: var(--subtle); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 2px; }
+  .contact-val { font-size: 13.5px; font-weight: 500; }
+  .contact-arrow { color: var(--subtle); transition: color 0.15s; }
+  .contact-item:hover .contact-arrow { color: var(--accent); }
+
+  /* ========== FOOTER ========== */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--subtle);
+  }
+
+  /* ========== ANIMATIONS ========== */
+  .fade { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade.visible { opacity: 1; transform: translateY(0); }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; }
+    .container { padding: 0 1.25rem; }
+    section { padding: 3.5rem 0; }
+    footer { flex-direction: column; gap: 0.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== NAVIGATION ========== -->
+<nav>
+  <a href="#" class="nav-logo">Steven Huynh</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#main-content">Projects & Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+  <!-- ========== HERO SECTION ========== -->
+  <!-- EDITABLE: Replace banner.png with your own image -->
+  <section class="hero" id="home">
+    <img src="banner.png" alt="Steven Huynh" class="hero-banner" />
+    <div class="hero-eyebrow"><span class="dot"></span>Open to full-time roles 2026</div>
+    
+    <!-- EDITABLE: Main title -->
+    <h1>Data analytics.<br><em>Business minded.</em></h1>
+    
+    <!-- EDITABLE: Subtitle (your one-line description) -->
+    <p class="hero-subtitle">Data Analyst Intern @ Canterbury Consulting | Business Analytics Student | Former Business Intelligence Intern</p>
+    
+    <div class="hero-links">
+      <a href="#main-content" class="btn btn-primary">View Projects</a>
+      <a href="https://www.linkedin.com/in/stevenvphuynh/" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT SECTION ========== -->
+  <section id="about">
+    <div class="section-label">About</div>
+    <h2>Background</h2>
+    
+    <!-- EDITABLE: Update your background paragraph here -->
+    <p class="about-text">I'm a <strong>Business Analytics senior at Cal State Fullerton</strong> graduating May 2026. I translate messy data into actionable insights using automated pipelines, interactive dashboards, and analytical frameworks across consulting, real estate, and entertainment.</p>
+    
+    <!-- EDITABLE: Add or remove skills here -->
+    <div class="skills-row">
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">SQL</span>
+      <span class="skill-tag">Power BI</span>
+      <span class="skill-tag">Tableau</span>
+      <span class="skill-tag">Excel</span>
+      <span class="skill-tag">Alteryx</span>
+      <span class="skill-tag">Microsoft Dynamics 365</span>
+    </div>
+  </section>
+
+  <!-- ========== MAIN TABBED SECTION (Projects / Work History) ========== -->
+  <section id="main-content">
+    
+    <!-- Main Tabs: Projects | Work History -->
+    <div class="main-tabs">
+      <button class="main-tab-btn active" data-main-tab="projects">Projects</button>
+      <button class="main-tab-btn" data-main-tab="work">Work History</button>
+    </div>
+
+    <!-- ========== PROJECTS TAB CONTENT ========== -->
+    <div class="main-tab-content active" id="main-tab-projects">
+      <div class="section-label">Work</div>
+      <h2>Selected Projects</h2>
+
+      <!-- FEATURED PROJECT -->
+      <!-- EDITABLE: Replace sports-project.png with your own image, or remove the <img> tag entirely -->
+      <div class="project-card featured fade">
+        <img src="sports-project.png" alt="Monte Carlo Simulation Results" class="project-img" />
+        <div class="project-body large">
+          <div class="project-meta">
+            <div class="project-tags">
+              <span class="tag tag-green">Featured</span>
+              <span class="tag tag-green">Python</span>
+              <span class="tag tag-green">Probabilistic Modeling</span>
+            </div>
+            <span class="project-date">Jan 2026</span>
+          </div>
+          <div class="project-title large">Evaluating Pricing Inefficiencies in Correlated Markets Using Probabilistic Modeling</div>
+          <p class="project-desc">Built a pricing framework from scratch to identify and quantify inefficiencies in correlated multi-outcome markets using conditional probability, validated through Monte Carlo simulation and live real-world execution.</p>
+          <ul class="project-bullets">
+            <li>Modeled correlated joint probabilities using conditional probability (estimated true rates of ~15-17% vs market-implied ~12%)</li>
+            <li>Identified consistent 3-5 percentage point pricing gaps indicating positive expected value</li>
+            <li>Validated via Monte Carlo simulation: 500 runs × 200 events, profitable in 98.6% of scenarios</li>
+            <li>Real-world results (+75 units across 100-150 live observations) closely aligned with simulation expectations</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://docs.google.com/document/d/1sRdbuIQCBSLJVRRjHww_90UQDRlaPy9Ih_dyWZ41V-E/edit?usp=sharing" target="_blank" class="proj-link">Full Analysis ↗</a>
+            <a href="https://github.com/StevenVpHuynh/SportPricingCorrelationSimulation/blob/main/Correlation%20Monte%20Carlo%20Simulation.ipynb" target="_blank" class="proj-link secondary">Monte Carlo Notebook ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="project-card fade">
+        <div class="project-body">
+          <div class="project-meta">
+            <div class="project-tags">
+              <span class="tag tag-sage">SQL</span>
+              <span class="tag tag-sage">Tableau</span>
+            </div>
+            <span class="project-date">Apr 2025</span>
+          </div>
+          <div class="project-title">Retail Sales Exploratory Analysis – Tableau Dashboard & SQL</div>
+          <p class="project-desc">End-to-end EDA on 10,000+ retail records surfacing actionable insights on product performance, regional gaps, and discount strategy.</p>
+          <ul class="project-bullets">
+            <li>Identified low-margin product lines, high-loss states, and inconsistent discounting via SQL aggregation and filtering</li>
+            <li>Built an interactive Tableau executive dashboard with filters, KPIs, and profit margin breakdowns</li>
+            <li>Delivered a business report with strategic recommendations to improve profitability and optimize discount ranges</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://public.tableau.com/app/profile/steven.huynh5381/viz/DataSalesPortfolioProject/Dashboard1?publish=yes" target="_blank" class="proj-link">Tableau Dashboard ↗</a>
+            <a href="https://github.com/StevenVpHuynh/salesdashboard/blob/main/salesEDA.sql" target="_blank" class="proj-link secondary">SQL on GitHub ↗</a>
+            <a href="https://docs.google.com/document/d/1Q8aEx-mFMUc2j9B9oJxk4JeSHt0NSs-8dSt8rqpBatg/edit?usp=sharing" target="_blank" class="proj-link secondary">Business Report ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="project-card fade">
+        <div class="project-body">
+          <div class="project-meta">
+            <div class="project-tags">
+              <span class="tag tag-moss">SQL</span>
+              <span class="tag tag-moss">Power BI</span>
+            </div>
+            <span class="project-date">Apr 2025</span>
+          </div>
+          <div class="project-title">Sales KPI Dashboard – Power BI & SQL</div>
+          <p class="project-desc">Connected analytics pipeline from SQL Server to Power BI delivering a live filterable dashboard tracking revenue, AOV, and store performance.</p>
+          <ul class="project-bullets">
+            <li>Wrote optimized multi-table SQL queries to calculate revenue, AOV, and top-selling products</li>
+            <li>Connected SSMS to Power BI and built an interactive slicer-driven dashboard</li>
+            <li>Demonstrated end-to-end analytical skills from raw data wrangling to business-ready reporting</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://docs.google.com/presentation/d/1gVhIVucxcOLZJsCfeAdtv02hKnlUW5DHh7xXWpT_ioc/edit?usp=sharing" target="_blank" class="proj-link">Full Project ↗</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ========== WORK HISTORY TAB CONTENT ========== -->
+    <div class="main-tab-content" id="main-tab-work">
+      <div class="section-label">Experience</div>
+      <h2>Work History</h2>
+
+      <!-- Work History Sub-Tabs -->
+      <div class="work-tabs">
+        <button class="work-tab-btn active" data-work-tab="canterbury">Canterbury Consulting</button>
+        <button class="work-tab-btn" data-work-tab="csuf">CSUF Analytics Lab</button>
+        <button class="work-tab-btn" data-work-tab="nhc">New Home Co.</button>
+        <button class="work-tab-btn" data-work-tab="beats">Beats by Dre</button>
+      </div>
+
+      <!-- Canterbury -->
+      <div class="work-tab-panel active" id="work-tab-canterbury">
+        <div class="exp-item">
+          <div class="exp-logo">CC</div>
+          <div>
+            <div class="exp-role">Data Analyst Intern</div>
+            <div class="exp-company">Canterbury Consulting · Internship</div>
+            <div class="exp-date">Feb 2026 – Present · Newport Beach, CA · Hybrid</div>
+            <ul class="exp-bullets">
+              <li>Designing an enterprise RAG system on Azure as a pilot to test AI-powered search across 5-15 investment strategies, integrating Blob Storage, Document Intelligence, and AI Search with metadata-filtered indexing and compliance controls</li>
+              <li>Automated reporting in Power BI by migrating manual Excel workflows into dynamic, refreshable dashboards across multiple asset classes, saving 2+ hours per creation and improving data consistency across client deliverables</li>
+              <li>Built an intelligent email intake pipeline in Power Automate that classifies incoming quarterly call requests against a firm directory and routes unmatched contacts to an AI-assisted human review process, saving 10+ hours per cycle</li>
+              <li>Designed and deployed Power Automate workflows for compliance folder auto-generation, SharePoint list archiving, and diligence completion notifications, saving multiple hours per process across 3 departments</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- CSUF -->
+      <div class="work-tab-panel" id="work-tab-csuf">
+        <div class="exp-item">
+          <div class="exp-logo">CSUF</div>
+          <div>
+            <div class="exp-role">Student Lab Assistant</div>
+            <div class="exp-company">California State University, Fullerton · Part-time</div>
+            <div class="exp-date">Aug 2025 – Feb 2026 · Fullerton, CA · On-site</div>
+            <ul class="exp-bullets">
+              <li>Guided 40+ students in applying SQL, Python, and BI tools including Tableau, Power BI, Excel, and Alteryx to solve real-world business analytics problems</li>
+              <li>Collaborated closely with faculty to develop data-driven course materials by leveraging Python and Alteryx to compile, clean, and structure data from source files into instructional-ready datasets</li>
+              <li>Delivered live demonstrations of analytics tools and workflows to students from diverse majors, reinforcing practical understanding of data-driven decision-making</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- New Home Co -->
+      <div class="work-tab-panel" id="work-tab-nhc">
+        <div class="exp-item">
+          <div class="exp-logo">NHC</div>
+          <div>
+            <div class="exp-role">Business Intelligence Analyst Intern</div>
+            <div class="exp-company">New Home Co. · Internship</div>
+            <div class="exp-date">Jun 2025 – Jul 2025 · Irvine, CA · On-site</div>
+            <ul class="exp-bullets">
+              <li>Built production-ready SSRS reports using SQL (aggregations, joins, stored procedures) across enterprise databases, enabling land acquisition teams to optimize decisions around active developments and surface emerging issues</li>
+              <li>Pioneered the first centralized HubSpot dashboards for the organization during a CRM migration where no prior reporting infrastructure existed, meeting with marketing and sales teams to align on KPIs and replicating standardized performance visibility across 7 U.S. divisions</li>
+              <li>Worked with internal stakeholders and external technical consultants to demonstrate dashboards, investigate data anomalies and missing fields, and clearly communicate data limitations and integration constraints</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Beats -->
+      <div class="work-tab-panel" id="work-tab-beats">
+        <div class="exp-item">
+          <div class="exp-logo">Bts</div>
+          <div>
+            <div class="exp-role">Qualitative & Quantitative Insights Extern</div>
+            <div class="exp-company">Beats by Dre · Externship</div>
+            <div class="exp-date">Dec 2024 – Mar 2025 · Remote</div>
+            <ul class="exp-bullets">
+              <li>Analyzed 4,000+ customer survey responses with Pivot Tables to surface key trends in customer preferences and satisfaction drivers, supporting cross-team decision-making on retention strategy</li>
+              <li>Used Python and Gemini API to perform sentiment analysis on Amazon product reviews, benchmarking brand perception against three competitors to identify relative strengths and weaknesses</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ========== CONTACT SECTION ========== -->
+  <section id="contact">
+    <div class="section-label">Contact</div>
+    <h2>Let's connect</h2>
+    <p class="contact-text">Looking for full-time roles in data and business analytics starting in 2026. Open to recruiting conversations, collaborations, or just talking data.</p>
+    <div class="contact-items">
+      <a href="mailto:Steven.vhuynh01@gmail.com" class="contact-item fade">
+        <div><div class="contact-type">Email</div><div class="contact-val">Steven.vhuynh01@gmail.com</div></div>
+        <span class="contact-arrow">→</span>
+      </a>
+      <a href="https://www.linkedin.com/in/stevenvphuynh/" target="_blank" class="contact-item fade">
+        <div><div class="contact-type">LinkedIn</div><div class="contact-val">linkedin.com/in/stevenvphuynh</div></div>
+        <span class="contact-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Steven Huynh</span>
+    <span>Business Analytics · Cal State Fullerton</span>
+  </footer>
+
+</div>
+
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+  // Main Tabs: Projects / Work History
+  document.querySelectorAll('.main-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.main-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.main-tab-content').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('main-tab-' + btn.dataset.mainTab).classList.add('active');
+    });
+  });
+
+  // Work History Sub-Tabs
+  document.querySelectorAll('.work-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.work-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.work-tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('work-tab-' + btn.dataset.workTab).classList.add('active');
+    });
+  });
+
+  // Fade in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
